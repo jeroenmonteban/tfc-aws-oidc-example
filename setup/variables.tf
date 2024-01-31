@@ -1,4 +1,3 @@
-// Generate an API token at https://app.terraform.io/app/settings/tokens
 variable "tfc_token" {
   description = "TFC API token"
   type        = string

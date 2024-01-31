@@ -11,11 +11,13 @@ terraform {
   }
 }
 
+// Generate an API token at https://app.terraform.io/app/settings/tokens
 provider "tfe" {
   hostname = "app.terraform.io"
   token    = var.tfc_token
 }
 
+// Create AWS access credentials in the console
 provider "aws" {
   region     = "eu-central-1"
   access_key = var.aws_setup_access_key

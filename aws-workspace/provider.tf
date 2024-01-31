@@ -7,9 +7,9 @@ terraform {
     }
   }
   cloud {
-    organization = ""
+    organization = "my-org-jm"
     workspaces {
-      name = ""
+      name = "demo-workspace"
     }
   }
 }

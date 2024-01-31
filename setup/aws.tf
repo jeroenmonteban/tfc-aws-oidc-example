@@ -11,18 +11,20 @@ resource "aws_iam_openid_connect_provider" "tfc_provider" {
 
 resource "aws_iam_role" "tfc_role" {
   name = "tfc-demo-role"
-  assume_role_policy = templatefile("./tfc_role.tpl",
+  assume_role_policy = templatefile("./aws_config/tfc_role.tpl",
     {
       oidc_arn         = aws_iam_openid_connect_provider.tfc_provider.arn
       oidc_client_list = one(aws_iam_openid_connect_provider.tfc_provider.client_id_list)
-      tfc_organization = var.tfc_organization,
+      tfc_organization = var.tfc_organization
+      tfc_project      = var.tfc_project
+      tfc_workspace    = var.tfc_workspace
   })
 }
 
 resource "aws_iam_policy" "tfc_policy" {
   name        = "tfc-demo-policy"
   description = "TFC run policy for demo purposes"
-  policy      = file("./tfc_policy.json")
+  policy      = file("./aws_config/tfc_policy.json")
 }
 
 resource "aws_iam_role_policy_attachment" "tfc_policy_attachment" {

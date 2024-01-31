@@ -1,10 +1,19 @@
 terraform {
   required_providers {
+    tfe = {
+      version = "~> 0.51"
+    }
+
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
   }
+}
+
+provider "tfe" {
+  hostname = "app.terraform.io"
+  token    = var.tfc_token
 }
 
 provider "aws" {

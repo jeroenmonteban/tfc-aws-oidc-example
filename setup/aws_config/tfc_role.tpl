@@ -12,7 +12,7 @@
          "app.terraform.io:aud": "${oidc_client_list}"
        },
        "StringLike": {
-         "app.terraform.io:sub": "organization:${tfc_organization}:project:*:workspace:*:run_phase:*"
+         "app.terraform.io:sub": "organization:${tfc_organization}:project:${tfc_project}:workspace:${tfc_workspace}:run_phase:*"
        }
      }
    }
